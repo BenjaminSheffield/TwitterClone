@@ -158,10 +158,27 @@ textarea {
 
 .logo {
     display: block;
-    margin: 0 auto;
+    margin: 60px auto;
+    border-radius: 20px;
 }
 
-/*body {
+
+
+.background {
+    background-image: url("/Images/background2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: #000000;
-}*/
+}
+
+.RegButton {
+    width: 200px;
+    margin: 20px auto;
+}
+
+.LoginButton {
+    width: 200px;
+    margin: 20px auto;
+}
 

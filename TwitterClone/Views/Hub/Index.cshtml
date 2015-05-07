@@ -70,7 +70,7 @@
             </div>
         }
         <ul class="list-unstyled">
-            @foreach(var tweet in Model.TweetsViewModel.Tweets)
+            @foreach(var tweet in Enumerable.Reverse(Model.TweetsViewModel.Tweets))
             {
                 <li>@tweet.Content</li>
             }
