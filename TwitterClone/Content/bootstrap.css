@@ -6934,3 +6934,17 @@ td.visible-print {
         margin-right: 0;
     }
 }
+
+/*Search Box */
+
+#custom-search-input .search-query {
+  padding-right: 3px;
+  padding-right: 4px \9;
+  padding-left: 3px;
+  padding-left: 4px \9;
+  padding-top: 3px;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
