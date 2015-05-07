@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using TwitterClone.Models;
 
 namespace TwitterClone.Controllers
@@ -14,7 +15,15 @@ namespace TwitterClone.Controllers
         {
             ApplicationDbContext Db = new ApplicationDbContext();
 
-            return View(Db.Tweets.ToList());
+            var viewModel = new HubIndexViewModel
+            {
+                TweetsViewModel = new ListTweetsViewModel
+                {
+                    Tweets = Db.Tweets.ToList()
+                }
+            };
+
+            return View(viewModel);
 
             //if (User.Identity.IsAuthenticated)
             //{
@@ -27,12 +36,13 @@ namespace TwitterClone.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateTweet(SubmitTweetViewModel model)
+        public ActionResult CreateTweet(HubIndexViewModel model)
         {
             //grab values from ViewModel and save particular parts to db
             ApplicationDbContext Db = new ApplicationDbContext();
-
-            Db.Tweets.Add(new Tweet {Content = model.Content, User = model.User});
+            var currentUserId = User.Identity.GetUserId();
+            var currentUser = Db.Users.Single(x => x.Id == currentUserId);
+            Db.Tweets.Add(new Tweet {Content = model.SubmitTweetModel.Content, User = currentUser});
             Db.SaveChanges();
 
             return RedirectToAction("Index");

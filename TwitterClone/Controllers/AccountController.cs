@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -73,6 +74,8 @@ namespace TwitterClone.Controllers
                 return View(model);
             }
 
+            ApplicationDbContext Db = new ApplicationDbContext();
+            
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -80,7 +83,16 @@ namespace TwitterClone.Controllers
             {
                 case SignInStatus.Success:
                     //return RedirectToLocal(returnUrl);
-                    return RedirectToAction("Index", "Hub");
+
+                    var viewModel = new HubIndexViewModel
+                    {
+                        TweetsViewModel = new ListTweetsViewModel
+                        {
+                            Tweets = Db.Tweets.ToList()
+                        }
+                    };
+
+                    return RedirectToAction("Index", "Hub", viewModel);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -163,8 +175,17 @@ namespace TwitterClone.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    ApplicationDbContext Db = new ApplicationDbContext();
 
-                    return RedirectToAction("Index", "Home");
+                    var viewModel = new HubIndexViewModel
+                    {
+                        TweetsViewModel = new ListTweetsViewModel
+                        {
+                            Tweets = Db.Tweets.ToList()
+                        }
+                    };
+
+                    return RedirectToAction("Index", "Hub", viewModel);
                 }
                 AddErrors(result);
             }

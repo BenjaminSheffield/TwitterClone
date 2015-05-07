@@ -1,4 +1,4 @@
-﻿
+﻿@model TwitterClone.Models.HubIndexViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -51,12 +51,29 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <form class="form-horizontal">
-                <div class="form-group has-feedback">
-                    @*<label for="txt1" class="col-sm-2 control-label">Tweet Here!</label>*@
-                    <div class="col-sm-8" id="tweetbox">
-                        <input id="txt1" type="text" class="form-control hasclear" placeholder="Tweet Here!">
+        @using (Html.BeginForm("CreateTweet", "Hub", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <!--<form class="form-horizontal">
+                    <div class="form-group has-feedback">
+                        @*<label for="txt1" class="col-sm-2 control-label">Tweet Here!</label>*@
+                        <div class="col-sm-8" id="tweetbox">
+                            <input id="txt1" type="text" class="form-control hasclear" placeholder="Tweet Here!">
+                        </div>
                     </div>
+                </form>-->
+
+            <div class="form-group">
+                @*@Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })*@
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.SubmitTweetModel.Content, new { @class = "form-control hasclear", @placeholder = "Tweet Here!"})
                 </div>
-        </div>
+            </div>
+        }
+        <ul class="list-unstyled">
+            @foreach(var tweet in Enumerable.Reverse(Model.TweetsViewModel.Tweets))
+            {
+                <li>@tweet.Content</li>
+            }
+        </ul>
+    </div>
+</div>
