@@ -6937,14 +6937,20 @@ td.visible-print {
 
 /*Search Box */
 
-#custom-search-input .search-query {
+#custom-search-input {
   padding-right: 3px;
   padding-right: 4px \9;
   padding-left: 3px;
   padding-left: 4px \9;
   padding-top: 3px;
+    margin-top: 7px;
   margin-bottom: 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+
+#txt1 {
+    width: 3000%;
+    height: 2000%;
 }
