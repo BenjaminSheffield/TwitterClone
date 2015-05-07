@@ -1,3 +1,5 @@
+using TwitterClone.Models;
+
 namespace TwitterClone.Migrations
 {
     using System;
@@ -19,13 +21,13 @@ namespace TwitterClone.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Tweets.AddOrUpdate(
+              p => p.Content ,
+              new Tweet { Content = "Andrew Peters"},
+              new Tweet { Content = "Brice Lambson" },
+              new Tweet { Content = "Rowan Miller" }
+            );
+            
         }
     }
 }
