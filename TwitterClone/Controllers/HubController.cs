@@ -15,7 +15,15 @@ namespace TwitterClone.Controllers
         {
             ApplicationDbContext Db = new ApplicationDbContext();
 
-            return View(new HubIndexViewModel());
+            var viewModel = new HubIndexViewModel
+            {
+                TweetsViewModel = new ListTweetsViewModel
+                {
+                    Tweets = Db.Tweets.ToList()
+                }
+            };
+
+            return View(viewModel);
 
             //if (User.Identity.IsAuthenticated)
             //{
