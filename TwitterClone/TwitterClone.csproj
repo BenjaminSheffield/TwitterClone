@@ -173,6 +173,10 @@
     <Compile Include="Migrations\201505062333134_Adding_Tweets_Table.Designer.cs">
       <DependentUpon>201505062333134_Adding_Tweets_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505072247433_Followees_Followers.cs" />
+    <Compile Include="Migrations\201505072247433_Followees_Followers.Designer.cs">
+      <DependentUpon>201505072247433_Followees_Followers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HubViewModel.cs" />
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505062333134_Adding_Tweets_Table.resx">
       <DependentUpon>201505062333134_Adding_Tweets_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505072247433_Followees_Followers.resx">
+      <DependentUpon>201505072247433_Followees_Followers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

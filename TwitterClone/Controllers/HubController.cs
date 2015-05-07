@@ -13,26 +13,25 @@ namespace TwitterClone.Controllers
         // GET: Hub
         public ActionResult Index()
         {
-            ApplicationDbContext Db = new ApplicationDbContext();
-
-            var viewModel = new HubIndexViewModel
+           
+            if (User.Identity.IsAuthenticated)
             {
-                TweetsViewModel = new ListTweetsViewModel
+                ApplicationDbContext Db = new ApplicationDbContext();
+
+                var viewModel = new HubIndexViewModel
                 {
-                    Tweets = Db.Tweets.ToList()
-                }
-            };
+                    TweetsViewModel = new ListTweetsViewModel
+                    {
+                        Tweets = Db.Tweets.ToList()
+                    }
+                };
 
-            return View(viewModel);
-
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    return View();  //Db.Users.ToList()
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
+                return View(viewModel);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         [HttpPost]
