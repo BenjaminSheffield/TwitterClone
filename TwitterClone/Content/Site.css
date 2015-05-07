@@ -161,7 +161,11 @@ textarea {
     margin: 0 auto;
 }
 
-body {
+
+
+html {
+    background-image: url("C:\Users\user\Documents\GitHub\TwitterClone\TwitterClone\Images\background2.jpg");
+    background-size: cover;
     background-color: #000000;
 }
 
