@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TwitterClone.Models;
 
 namespace TwitterClone.Controllers
 {
@@ -10,7 +11,26 @@ namespace TwitterClone.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            
+            if (User.Identity.IsAuthenticated)
+            {
+                ApplicationDbContext Db = new ApplicationDbContext();
+
+                var viewModel = new HubIndexViewModel
+                {
+                    TweetsViewModel = new ListTweetsViewModel
+                    {
+                        Tweets = Db.Tweets.ToList()
+                    }
+                };
+
+                return RedirectToAction("Index", "Hub", viewModel);
+            }
+            else
+            {
+                return View(); 
+            }
+        
         }
 
         public ActionResult About()
