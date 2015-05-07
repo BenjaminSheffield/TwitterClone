@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TwitterClone.Models
 {
@@ -65,6 +66,12 @@ namespace TwitterClone.Models
     public class RegisterViewModel
     {
         [Required]
+        [Index(IsUnique = true)]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Index(IsUnique = true)]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
