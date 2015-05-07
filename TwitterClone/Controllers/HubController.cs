@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TwitterClone.Models;
 
 namespace TwitterClone.Controllers
 {
@@ -11,16 +12,30 @@ namespace TwitterClone.Controllers
         // GET: Hub
         public ActionResult Index()
         {
-            //ApplicationDbContext Db = new ApplicationDbContext();
+            ApplicationDbContext Db = new ApplicationDbContext();
+
+            return View(Db.Tweets.ToList());
 
             //if (User.Identity.IsAuthenticated)
             //{
-                return View();  //Db.Users.ToList()
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Login", "Account");
-        //    }
+            //    return View();  //Db.Users.ToList()
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
+        }
+
+        [HttpPost]
+        public ActionResult CreateTweet(SubmitTweetViewModel model)
+        {
+            //grab values from ViewModel and save particular parts to db
+            ApplicationDbContext Db = new ApplicationDbContext();
+
+            Db.Tweets.Add(new Tweet {Content = model.Content, User = model.User});
+            Db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // GET: Hub/Details/5

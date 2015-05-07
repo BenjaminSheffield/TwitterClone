@@ -10,6 +10,5 @@ namespace TwitterClone.Models
         public int Id { get; set; }
         public string Content { get; set; }
         public ApplicationUser User { get; set; }
-
     }
 }
