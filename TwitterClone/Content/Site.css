@@ -175,10 +175,27 @@ textarea {
 .RegButton {
     width: 200px;
     margin: 20px auto;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .LoginButton {
     width: 200px;
     margin: 20px auto;
+    font-family: 'Montserrat', sans-serif;
+    
 }
+
+.row {
+    width: 200px;
+    margin: auto;
+    color: fuchsia;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.RegisterParagraph {
+    text-decoration-none: none;
+}
+
 
