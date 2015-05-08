@@ -149,11 +149,13 @@ textarea {
   padding-left: 3px;
   padding-left: 4px \9;
   padding-top: 3px;
-    margin-top: 7px;
-  margin-bottom: 0;
+  margin-top: 7px;
+  margin-bottom: 10px;
+    margin-left: 20px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  width: 200px;
 }
 
 .logo {
@@ -199,5 +201,11 @@ textarea {
     text-decoration: none !important;
 }
 
-
+#regheader {
+    width: 250px;
+    margin: auto;
+    color: #ffd700;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+}
 

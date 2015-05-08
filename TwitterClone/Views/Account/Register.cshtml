@@ -9,12 +9,12 @@
 <link href="/Content/site.css" rel="stylesheet">
 
 <body class="background">
+    <h4 id="regheader">Create a new account</h4>
     <div class="row">
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             <div class="RegInfo">
                 @Html.AntiForgeryToken()
-                <h4>Create a new account.</h4>
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
