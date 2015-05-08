@@ -196,7 +196,7 @@ textarea {
 }
 
 .RegisterParagraph {
-    text-decoration-none: none;
+    text-decoration: none !important;
 }
 
 
