@@ -2356,6 +2356,8 @@ fieldset[disabled] .btn-link:focus {
   width: 100%;
   padding-right: 0;
   padding-left: 0;
+  font-family: 'Montserrat', sans-serif;
+    color: #ffd700;
 }
 
 .btn-block + .btn-block {

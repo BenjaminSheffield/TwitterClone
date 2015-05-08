@@ -180,6 +180,7 @@ textarea {
 }
 
 .LoginButton {
+    color: #ffd700;
     width: 200px;
     margin: 20px auto;
     font-family: 'Montserrat', sans-serif;
@@ -189,13 +190,14 @@ textarea {
 .row {
     width: 200px;
     margin: auto;
-    color: fuchsia;
+    color: #ffd700;
     font-size: 22px;
     font-family: 'Montserrat', sans-serif;
 }
 
 .RegisterParagraph {
-    text-decoration-none: none;
+    text-decoration: none !important;
 }
+
 
 
