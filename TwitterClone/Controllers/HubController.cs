@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using TwitterClone.Models;
 
@@ -18,11 +20,14 @@ namespace TwitterClone.Controllers
             {
                 ApplicationDbContext Db = new ApplicationDbContext();
 
+                IEnumerable<ApplicationUser> currentUser = Db.Users.Where(x => x.Id == User.Identity.GetUserId());
+                List<ApplicationUser> followingList = Db.Users.Find(currentUser).Followees;
+
                 var viewModel = new HubIndexViewModel
                 {
                     TweetsViewModel = new ListTweetsViewModel
                     {
-                        Tweets = Db.Tweets.ToList()
+                        Tweets = Db.Tweets.Where(x => followingList.Contains(x.User)).ToList()
                     }
                 };
 
