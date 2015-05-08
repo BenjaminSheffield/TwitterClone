@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using TwitterClone.Models;
+using WebGrease.Css.Extensions;
 
 namespace TwitterClone.Controllers
 {
@@ -18,11 +21,18 @@ namespace TwitterClone.Controllers
             {
                 ApplicationDbContext Db = new ApplicationDbContext();
 
+                var users = Db.Users.ToList();
+                var tweets = Db.Tweets.ToList();
+
+                var userId = User.Identity.GetUserId();
+                ApplicationUser currentUser = users.Single(x => x.Id == userId);
+                var followingList = users.Where(x => currentUser.Followees.Contains(x)).ToList();
+
                 var viewModel = new HubIndexViewModel
                 {
                     TweetsViewModel = new ListTweetsViewModel
                     {
-                        Tweets = Db.Tweets.ToList()
+                        Tweets = tweets.Where(x => followingList.Contains(x.User)).ToList()
                     }
                 };
 

@@ -31,6 +31,7 @@ namespace TwitterClone.Models
 
         public virtual DbSet<Tweet> Tweets { get; set; }
 
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

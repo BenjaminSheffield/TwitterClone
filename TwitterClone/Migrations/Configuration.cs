@@ -21,12 +21,12 @@ namespace TwitterClone.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            context.Tweets.AddOrUpdate(
-              p => p.Content ,
-              new Tweet { Content = "Andrew Peters"},
-              new Tweet { Content = "Brice Lambson" },
-              new Tweet { Content = "Rowan Miller" }
-            );
+            //context.Users.Find() Tweets.AddOrUpdate(
+            //  p => p.Content ,
+            //  new Tweet { Content = "Andrew Peters"},
+            //  new Tweet { Content = "Brice Lambson" },
+            //  new Tweet { Content = "Rowan Miller" }
+            //);
             
         }
     }
