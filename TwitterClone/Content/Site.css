@@ -180,17 +180,17 @@ textarea {
 }
 
 .LoginButton {
+    color: #ffd700;
     width: 200px;
     margin: 20px auto;
     font-family: 'Montserrat', sans-serif;
-    color: fuchsia;
     
 }
 
 .row {
     width: 200px;
     margin: auto;
-    color: fuchsia;
+    color: #ffd700;
     font-size: 22px;
     font-family: 'Montserrat', sans-serif;
 }
